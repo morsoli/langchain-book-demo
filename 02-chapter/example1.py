@@ -11,8 +11,8 @@ messages = [HumanMessage(content=text)]
 
 if __name__ == "__main__":
     print(llm.invoke(text))
-    # >> 茶杯屋
+    # 输出： 茶杯屋
 
     print(chat_model.invoke(messages))
-    # >> content='杯享'
+    # 输出： content='杯享'
     
