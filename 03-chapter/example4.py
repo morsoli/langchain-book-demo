@@ -1,6 +1,10 @@
 from langchain.prompts.example_selector.base import BaseExampleSelector
 from typing import Dict, List
 import numpy as np
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 class CustomExampleSelector(BaseExampleSelector):
 

@@ -1,5 +1,8 @@
 from langchain.prompts.chat import ChatPromptTemplate
+from dotenv import load_dotenv
 
+# 加载环境变量
+load_dotenv()
 
 template = "你是一个能将{input_language}翻译成{output_language}的助手。"
 human_template = "{text}"

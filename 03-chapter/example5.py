@@ -3,7 +3,10 @@ from langchain.prompts import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
+from dotenv import load_dotenv
 
+# 加载环境变量
+load_dotenv()
 
 template="你是一个翻译助手，可以将 {input_language} 翻译为 {output_language}."
 system_message_prompt = SystemMessagePromptTemplate.from_template(template)

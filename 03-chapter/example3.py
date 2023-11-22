@@ -1,5 +1,9 @@
 from langchain.prompts import PromptTemplate
 from langchain.prompts import FewShotPromptTemplate
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 example_prompt = PromptTemplate(input_variables=["input", "output"], template="问题: {input}\n{output}")
 # 创建FewShotPromptTemplate实例

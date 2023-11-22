@@ -3,7 +3,10 @@ from typing import List
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import BaseOutputParser
+from dotenv import load_dotenv
 
+# 加载环境变量
+load_dotenv()
 class CommaSeparatedListOutputParser(BaseOutputParser[List[str]]):
     """将LLMs 逗号分隔格式输出内容解析为的列表"""
 

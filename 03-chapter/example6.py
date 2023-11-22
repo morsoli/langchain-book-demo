@@ -6,6 +6,10 @@ from pydantic import Field
 from typing import List, Mapping, Optional, Any
 from langchain.llms.base import LLM
 from gpt4all import GPT4All
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 class CustomLLM(LLM):
     """

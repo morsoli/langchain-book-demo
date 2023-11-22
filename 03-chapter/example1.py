@@ -1,4 +1,9 @@
 from langchain.prompts import PromptTemplate
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
+
 # 定义模板
 template = PromptTemplate.from_template("翻译这段文字: {text}，风格: {style}")
 # 定义变量style和text的内容

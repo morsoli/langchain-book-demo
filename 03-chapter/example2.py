@@ -1,6 +1,10 @@
 from langchain.prompts import StringPromptTemplate
 from langchain.pydantic_v1 import BaseModel, validator
 import json
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 delimiter="####"
 
