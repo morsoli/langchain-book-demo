@@ -19,6 +19,5 @@ def test():
     print(runnable.batch([{"product": "杯子"},{"product": "足球"}], config={"max_concurrency":3}))
 
 
-
 if __name__ == "__main__":
     test()
