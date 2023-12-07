@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 
 def get_current_weather(location: str, unit: str = "celsius"):
     """根据输入地点获取天气情况"""
@@ -27,6 +28,5 @@ tools = [
 ]
 
 if __name__ == "__main__":
-    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-    mrkl = initialize_agent(tools, llm, agent=AgentType.OPENAI_FUNCTIONS, verbose=True)
-    mrkl.run("今天北京天气怎么样?")
+    openai_function_agent = initialize_agent(tools, llm, agent=AgentType.OPENAI_FUNCTIONS, verbose=True)
+    openai_function_agent.run("今天北京天气怎么样?")
