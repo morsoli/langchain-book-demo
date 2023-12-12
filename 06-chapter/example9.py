@@ -1,9 +1,6 @@
 import requests
-import torch
 import os
-from transformers import BlipProcessor, BlipForConditionalGeneration
 from langchain.tools import BaseTool
-from PIL import Image
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 from langchain.chat_models import ChatOpenAI
