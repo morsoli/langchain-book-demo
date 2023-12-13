@@ -9,7 +9,7 @@ load_dotenv()
 # 创建一个ConversationBufferWindowMemory实例，只保留最后1次互动
 memory = ConversationBufferWindowMemory(k=1)
 
-# 保存上下文信息
+# 模拟一段对话并保存上下文
 memory.save_context({"input": "嗨"}, {"output": "怎么了"})
 memory.save_context({"input": "没什么，你呢"}, {"output": "也没什么"})
 
