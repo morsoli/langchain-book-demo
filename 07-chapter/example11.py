@@ -7,6 +7,7 @@ from langchain.memory import (
 )
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
+
 # 加载环境变量
 load_dotenv()
 
