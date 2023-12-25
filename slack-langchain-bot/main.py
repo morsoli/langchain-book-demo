@@ -12,9 +12,9 @@ load_dotenv()
 
 
 def main():
-    app = Flask(__name__)
+    app = Flask(__name__)  # 初始化一个Flask应用实例
 
-    slack_app = init_slack_app()
+    slack_app = init_slack_app()  # 初始化Slack应用
 
     scheduler = APScheduler()
     scheduler.api_enabled = True
@@ -28,11 +28,11 @@ def main():
     )
     scheduler.start()
 
-    slack_handler = SlackRequestHandler(slack_app)
+    slack_handler = SlackRequestHandler(slack_app)  # 创建一个Slack请求处理器
 
-    @app.route("/webhook/events", methods=["POST"])
+    @app.route("/webhook/events", methods=["POST"])  # 定义一个路由来处理来自Slack的事件
     def slack_events():
-        return slack_handler.handle(request)
+        return slack_handler.handle(request)  # 使用Slack请求处理器来处理请求
 
     @app.route('/ping')
     def ping():

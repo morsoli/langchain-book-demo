@@ -7,7 +7,7 @@
 
 from typing import Optional, Dict, List
 from pydantic import BaseModel
-from cache import KeyValueStore
+from libs.cache import KeyValueStore
 import time
 
 
@@ -48,13 +48,13 @@ class RateLimiter:
 
 
 class UsageTracker:
-    def __init__(self, n_free_messages: Optional[int] = 0):
+    def __init__(self, n_free_messages: Optional[int] = 10):
         """初始化一个用于跟踪用户消息使用情况的跟踪器。
 
         Args:
             n_free_messages (Optional[int]): 用户可免费使用的消息数量。
         """
-        self.kv_store = KeyValueStore(store_identifier="usage_tracking")
+        self.kv_store = KeyValueStore(cache_dir="usage_tracking")
         self.n_free_messages = n_free_messages
         self.rate_limiter = RateLimiter()
 

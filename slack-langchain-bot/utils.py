@@ -30,6 +30,7 @@ def create_cache_dir(dir_path: Path) -> None:
 voice_cache_dir = create_cache_dir(Path("../data/voice_cache/"))
 file_cache_dir = create_cache_dir(Path("../data/file_cache/"))
 web_cache_dir = create_cache_dir(Path("../data/web_cache/"))
+index_cache_dir = create_cache_dir(Path("../data/index_cache"))
 
 # 计算文件的 MD5 值
 def md5(file_path: Path) -> str:
@@ -55,8 +56,11 @@ def get_text_from_whisper(voice_file_path: Path) -> str:
 
 # 格式化对话文本
 def format_dialog_text(text: str, voicemessage: Optional[str] = None) -> str:
-    text = insert_space(text)
-    return text + ("\n" + voicemessage if voicemessage else "")
+    if text or voicemessage:
+        text = insert_space(text)
+        return text + ("\n" + voicemessage if voicemessage else "")
+    else:
+        return None
 
 # 在中英文之间插入空格
 def insert_space(text: str) -> str:

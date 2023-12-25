@@ -99,7 +99,7 @@ def build_slack_blocks(title: str, blog: List[Dict[str, Optional[str]]]) -> List
     return blocks
 
 def build_awesome_article() -> List[Dict]:
-    """构建热门博客块。
+    """热门博客。
 
     Args:
         blog_key (str): 博客关键词或分类。
