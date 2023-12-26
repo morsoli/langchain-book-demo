@@ -58,7 +58,7 @@ class ChatbotConfig():
 
 class FileType(str, Enum):
     # 枚举类，定义了支持的文件类型
-    YOUTUBE = "YOUTUBE"
+    VOVICE= "MP3"
     PDF = "PDF"
     WEB = "WEB"
     TEXT = "TEXT"
