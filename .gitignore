@@ -106,3 +106,6 @@ venv.bak/
 
 # add
 .idea/
+
+cache.*
+data/

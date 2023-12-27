@@ -40,9 +40,9 @@ def handle_errors(error):
 def handle_message(event, say, logger):
     slack_api_handler.process_event(event, say, logger)  # 处理收到的消息事件
     
-@slack_app.event("app_mention")
-def handle_mentions(event, say, logger):
-    slack_api_handler.process_event(event, say, logger)  # 处理收到的消息事件
+# @slack_app.event("app_mention")
+# def handle_mentions(event, say, logger):
+#     slack_api_handler.process_event(event, say, logger)  # 处理收到的消息事件
 
 @app.route('/ping')
 def ping():
