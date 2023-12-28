@@ -104,7 +104,6 @@ class SlackAPIHandler:
             context.say(f'<@{context.user}>, {gpt_response}', thread_ts=context.thread_ts)
         else:
             voice_file_path = langchain_agent(context.user, f"语音重复下面内容 {gpt_response}")
-            voice_file_path = "data/voice_cache/3269b614-28e9-4c97-a818-5c93ad93d2f2.mp3"
             self.client.files_upload_v2(file=voice_file_path, channel=context.event["channel"], thread_ts=context.thread_ts)
     
     def check_usage(self, context: SlackContext) -> bool:
