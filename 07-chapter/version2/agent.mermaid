@@ -1,0 +1,23 @@
+stateDiagram-v2
+    START --> load_memories: 开始对话
+    note right of START
+        对话开始时首先加载记忆
+    end note
+
+    load_memories --> agent: 传递加载的记忆
+    note right of load_memories
+        将加载的记忆传给代理
+    end note
+
+    agent --> tools: 需要使用工具
+    agent --> END: 不需要使用工具
+    note right of agent
+        通过route_tools函数
+        决定下一步流向
+    end note
+
+    tools --> agent: 工具调用完成
+    note right of tools
+        完成工具调用后
+        返回代理处理
+    end note

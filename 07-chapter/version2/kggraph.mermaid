@@ -1,0 +1,17 @@
+graph LR
+    %% 定义节点样式
+    classDef subject fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef object fill:#bbf,stroke:#333,stroke-width:2px;
+
+    %% 定义节点
+    莫尔索((莫尔索))
+    LangGraph
+    技术文章[技术文章]
+
+    %% 定义关系
+    莫尔索 -->|写作主题| LangGraph
+    莫尔索 -->|写作内容| 技术文章
+
+    %% 应用样式
+    class 莫尔索 subject;
+    class LangGraph,技术文章 object;

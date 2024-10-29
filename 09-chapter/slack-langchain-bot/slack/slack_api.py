@@ -1,8 +1,9 @@
 import requests
 from pathlib import Path
 from typing import Optional, Tuple
-from langchain.chat_models import ChatOpenAI
-from langchain.prompts.chat import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.chat_models.tongyi import ChatTongyi
+
 
 ROLE_PROMPT = f"""
 从此刻起，你将扮演学习助教的角色。只回答自己了解到的事实，不了解的事实就礼貌的回应自己不知道。\n
@@ -18,8 +19,8 @@ chat_prompt = ChatPromptTemplate.from_messages([
 
 
 from libs.usage import UsageTracker
-from utils import md5, get_text_from_whisper, format_dialog_text
-from utils import index_cache_dir
+from libs.utils import md5, get_text_from_whisper, format_dialog_text
+from libs.utils import index_cache_dir
 from agent.agent_api import langchain_agent
 
 class SlackContext:
@@ -38,7 +39,7 @@ class SlackAPIHandler:
         self.file_extension_allowed = ["pdf", "txt", "mdx", "md", "markdown"]
         self.max_file_size = 10 * 1024 * 1024
         self.usage = UsageTracker()
-        self.chat_model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7)
+        self.chat_model = ChatTongyi()
 
     def process_event(self, event: dict, say, logger) -> None:
         user = event["user"]

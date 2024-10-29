@@ -1,0 +1,6 @@
+flowchart LR
+    A[记忆系统] --> B[读取历史记忆]
+    B --> C[核心逻辑]
+    C --> D[LLM]
+    D --> |写入 LLM输入| A
+    D --> |写入 LLM输出| A
