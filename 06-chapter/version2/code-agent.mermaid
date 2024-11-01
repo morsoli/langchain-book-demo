@@ -1,0 +1,15 @@
+%%{init: {'flowchart': {'curve': 'linear'}}}%%
+graph TD;
+        __start__([<p>开始</p>]):::first
+        ____(生成代码)
+        反思错误(反思错误)
+        __end__([<p>结束</p>]):::last
+        __start__ --> ____;
+        反思错误 --> ____;
+        ____ --> 检查代码;
+        检查代码 --> __end__;
+        检查代码 -. &nbsp;反思&nbsp; .-> 反思错误;
+        检查代码 -. &nbsp;重新生成&nbsp; .-> ____;
+        classDef default fill:#f2f0ff,line-height:1.2
+        classDef first fill-opacity:0
+        classDef last fill:#bfb6fc

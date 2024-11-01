@@ -1,0 +1,23 @@
+%%{init: {'flowchart': {'curve': 'linear'}}}%%
+graph TD;
+        __start__([<p>开始</p>]):::first
+        model_get_schema(获取表的schema信息)
+        list_tables_tool(获取数据库所有表)
+        get_schema_tool(获取查询相关的schema信息)
+        query_gen(查询结果)
+        correct_query(检查SQL查询)
+        execute_query(执行查询)
+        __end__([<p>结束</p>]):::last
+        __start__ --> list_tables_tool;
+        correct_query --> execute_query;
+        execute_query --> query_gen;
+
+        get_schema_tool --> query_gen;
+        list_tables_tool --> model_get_schema;
+        model_get_schema --> get_schema_tool;
+        query_gen -.-> __end__;
+        query_gen -.-> correct_query;
+        query_gen -.-> query_gen;
+        classDef default fill:#f2f0ff,line-height:1.2
+        classDef first fill-opacity:0
+        classDef last fill:#bfb6fc
