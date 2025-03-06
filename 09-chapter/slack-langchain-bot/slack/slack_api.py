@@ -2,7 +2,7 @@ import requests
 from pathlib import Path
 from typing import Optional, Tuple
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 
 
 ROLE_PROMPT = f"""
@@ -39,7 +39,7 @@ class SlackAPIHandler:
         self.file_extension_allowed = ["pdf", "txt", "mdx", "md", "markdown"]
         self.max_file_size = 10 * 1024 * 1024
         self.usage = UsageTracker()
-        self.chat_model = ChatTongyi()
+        self.chat_model = ChatDeepSeek(model="deepseek-chat")
 
     def process_event(self, event: dict, say, logger) -> None:
         user = event["user"]

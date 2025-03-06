@@ -1,7 +1,7 @@
 import re
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.tools.tavily_search import TavilySearchResults
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langgraph.constants import END, START
 from langgraph.graph import MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode
@@ -19,7 +19,7 @@ def agent(state: MessagesState) -> MessagesState:
         ),
         ("placeholder", "{messages}"),
     ])
-    model = ChatTongyi(temperature=0)
+    model = ChatDeepSeek(model="deepseek-chat", temperature=0.3)
     model_with_tools = model.bind_tools(tools)
     bound = prompt | model_with_tools
     prediction = bound.invoke({
@@ -76,5 +76,5 @@ if __name__ == "__main__":
         # 处理用户输入
         user_query = re.sub(r"^人类: ", "", user_input)
         # 运行代理
-        print(f"AI: {langchain_agent("1", user_query)}")
+        print(f"AI: {langchain_agent('1', user_query)}")
         print("=" * 30)
