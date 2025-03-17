@@ -1,11 +1,11 @@
 from langchain.document_loaders import WebBaseLoader
-from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores.chroma import Chroma
 from langchain.chat_models import ChatOpenAI
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import LLMChainExtractor
 from langchain.retrievers.document_compressors import EmbeddingsFilter
+from langchain_community.embeddings.dashscope import DashScopeEmbeddings
 from dotenv import load_dotenv
 
 # 加载环境变量，通常用于配置文件中的API密钥等敏感信息
@@ -30,7 +30,7 @@ def test():
     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 
     # 创建向量数据库检索器
-    retriever = Chroma.from_documents(documents=splits, embedding=OpenAIEmbeddings()).as_retriever()
+    retriever = Chroma.from_documents(documents=splits, embedding=DashScopeEmbeddings()).as_retriever()
     question = "LLMOps指的是什么?"
 
     # 未压缩时查询的结果
@@ -46,7 +46,7 @@ def test():
     pretty_print_docs(docs)
 
     # 创建嵌入向量过滤器
-    embeddings_filter = EmbeddingsFilter(embeddings=OpenAIEmbeddings(), similarity_threshold=0.76)
+    embeddings_filter = EmbeddingsFilter(embeddings=DashScopeEmbeddings(), similarity_threshold=0.76)
     # 使用过滤器创建上下文压缩检索器
     compression_retriever = ContextualCompressionRetriever(base_compressor=embeddings_filter, base_retriever=retriever)
     # 过滤后的查询结果

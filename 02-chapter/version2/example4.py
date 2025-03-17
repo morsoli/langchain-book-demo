@@ -1,6 +1,6 @@
 from typing import List
 
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import BaseOutputParser
 
@@ -21,6 +21,6 @@ chat_prompt = ChatPromptTemplate.from_messages([
 ])
 
 if __name__ == "__main__":
-    chain = chat_prompt | ChatTongyi() | CommaSeparatedListOutputParser()
+    chain = chat_prompt | ChatDeepSeek(model="deepseek-chat") | CommaSeparatedListOutputParser()
     print(chain.invoke({"text": "动物"}))
     # 输出：['狗,猫,鸟,鱼,兔子']

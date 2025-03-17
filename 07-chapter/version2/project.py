@@ -12,7 +12,7 @@ from langchain_core.language_models import BaseLanguageModel
 
 # 导入时间模拟工具
 from langchain_core.utils import mock_now
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 
 # 自定义的智能代理记忆
 class CustomAgentMemory(BaseMemory):
@@ -66,7 +66,7 @@ class CustomAgentMemory(BaseMemory):
         pass
     
     def invoke(self, prompt, input_var: dict):
-        chain = prompt | ChatTongyi() | StrOutputParser()
+        chain = prompt | ChatDeepSeek(model="deepseek-chat") | StrOutputParser()
         return chain.invoke(input_var)
 
     # 将一个由换行符分隔的字符串转换为一个字符串列表

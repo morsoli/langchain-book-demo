@@ -1,4 +1,4 @@
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langchain_community.embeddings.dashscope import DashScopeEmbeddings
 from langchain_community.retrievers.web_research import WebResearchRetriever
 from langchain_chroma import Chroma
@@ -15,7 +15,7 @@ def test():
     )
 
     # 初始化语言模型
-    llm = ChatTongyi()
+    llm = ChatDeepSeek(model="deepseek-chat")
 
     # 初始化谷歌搜索API包装器
     search = GoogleSearchAPIWrapper()

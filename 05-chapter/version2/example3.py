@@ -2,7 +2,7 @@ from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import EmbeddingsFilter,LLMChainExtractor
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.embeddings.dashscope import DashScopeEmbeddings
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 
@@ -22,7 +22,7 @@ def test():
     splits = text_splitter.split_documents(data)
 
     # 创建语言模型实例
-    llm = ChatTongyi()
+    llm = ChatDeepSeek(model="deepseek-chat")
 
     # 创建向量数据库检索器
     retriever = Chroma.from_documents(documents=splits, embedding=DashScopeEmbeddings()).as_retriever()

@@ -1,6 +1,6 @@
 import uuid
 from langchain_core.messages import HumanMessage
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.constants import START
 from langgraph.graph import MessagesState, StateGraph
@@ -9,7 +9,7 @@ from langgraph.graph import MessagesState, StateGraph
 workflow = StateGraph(state_schema=MessagesState)
 
 # 定义聊天模型
-llm = ChatTongyi()
+llm = ChatDeepSeek(model="deepseek-chat")
 
 # 定义调用模型的函数
 def call_model(state: MessagesState):

@@ -1,10 +1,10 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.documents import Document
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 
 # 创建文档提示模板
-llm = ChatTongyi()
+llm = ChatDeepSeek(model="deepseek-chat")
 prompt = ChatPromptTemplate.from_template("总结下面的内容: {context}")
 
 

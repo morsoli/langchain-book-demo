@@ -1,5 +1,5 @@
 from langchain.retrievers import MultiQueryRetriever
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langchain_community.embeddings.dashscope import DashScopeEmbeddings
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -26,7 +26,7 @@ def test_query():
     question = "程序员如何实现自我成长?"
 
     # 创建一个基于语言模型的检索器
-    llm = ChatTongyi()
+    llm = ChatDeepSeek(model="deepseek-chat")
     # 使用多查询检索器，结合向量数据库和语言模型
     retriever_from_llm = MultiQueryRetriever.from_llm(
         retriever=vectordb.as_retriever(), llm=llm

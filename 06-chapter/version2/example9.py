@@ -7,8 +7,8 @@ from langchain_core.tools import tool
 from langchain_core.messages import ToolMessage
 from langchain_core.runnables import RunnableLambda, RunnableWithFallbacks
 from langchain_community.utilities import SQLDatabase
-from langchain_community.chat_models import ChatTongyi
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
+from langchain_deepseek import ChatDeepSeek
 from langgraph.graph import END, StateGraph, START
 from langgraph.graph.message import AnyMessage, add_messages
 from langgraph.prebuilt import ToolNode
@@ -17,7 +17,7 @@ from langgraph.prebuilt import ToolNode
 # 初始化数据库连接
 db = SQLDatabase.from_uri("sqlite:///Chinook.db")
 # 初始化数据库工具
-db_tool = SQLDatabaseToolkit(db=db, llm=ChatTongyi())
+db_tool = SQLDatabaseToolkit(db=db, llm=ChatDeepSeek(model="deepseek-chat"))
 tools = db_tool.get_tools()
 
 
@@ -59,7 +59,7 @@ query_check_system = """您是一位注重细节的SQL专家。
 query_check_prompt = ChatPromptTemplate.from_messages(
     [("system", query_check_system), ("placeholder", "{messages}")]
 )
-query_check = query_check_prompt | ChatTongyi(temperature=0).bind_tools([execute_db_query])
+query_check = query_check_prompt | ChatDeepSeek(model="deepseek-chat").bind_tools([execute_db_query])
 
 # print("="*10, query_check.invoke({"messages": [("user", "SELECT * FROM Artist LIMIT 10;")]}))
 
@@ -136,7 +136,7 @@ def handle_tool_error(state: dict) -> dict:
 
 
 # 添加选择相关表格的节点
-model_get_schema = ChatTongyi(temperature=0).bind_tools(
+model_get_schema = ChatDeepSeek(model="deepseek-chat").bind_tools(
     [get_schema_tool]
 )
 
@@ -181,7 +181,7 @@ query_gen_system = """您是一位注重细节的SQL专家。
 query_gen_prompt = ChatPromptTemplate.from_messages(
     [("system", query_gen_system), ("placeholder", "{messages}")]
 )
-query_gen = query_gen_prompt | ChatTongyi(temperature=0).bind_tools(
+query_gen = query_gen_prompt | ChatDeepSeek(model="deepseek-chat").bind_tools(
     [SubmitFinalAnswer]
 )
 

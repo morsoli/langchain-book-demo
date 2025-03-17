@@ -1,6 +1,6 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 
 def test():
     # 创建一个 PromptTemplate 实例，用于生成提示词。
@@ -10,8 +10,8 @@ def test():
     )
 
     # 创建一个 Runnable 链，包括上述提示词模板、聊天模型和字符串输出解析器。
-    # 这个链首先生成提示词，然后通过 ChatTongyi 聊天模型进行处理，最后通过 StrOutputParser 转换成字符串。
-    runnable = prompt | ChatTongyi() | StrOutputParser()
+    # 这个链首先生成提示词，然后通过 ChatDeepSeek 聊天模型进行处理，最后通过 StrOutputParser 转换成字符串。
+    runnable = prompt | ChatDeepSeek(model="deepseek-chat") | StrOutputParser()
 
     # 打印输入模式的 JSONSchema
     print(runnable.input_schema.model_json_schema())

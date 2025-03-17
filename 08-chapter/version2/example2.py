@@ -1,7 +1,7 @@
 import time
 from langchain_core.callbacks import BaseCallbackHandler
 from langchain_core.prompts import PromptTemplate
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
@@ -10,7 +10,7 @@ from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, ConsoleMetricExporter
 
-llm = ChatTongyi()
+llm = ChatDeepSeek(model="deepseek-chat")
 
 # 设置 OpenTelemetry Tracer
 trace.set_tracer_provider(TracerProvider(resource=Resource.create({SERVICE_NAME: "LangChainService"})))

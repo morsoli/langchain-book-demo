@@ -3,7 +3,7 @@ from typing import List
 from fastapi import FastAPI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import BaseOutputParser
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langserve import add_routes
 
 # 链定义
@@ -22,7 +22,7 @@ chat_prompt = ChatPromptTemplate.from_messages([
     ("system", template),
     ("human", human_template),
 ])
-first_chain = chat_prompt | ChatTongyi() | CommaSeparatedListOutputParser()
+first_chain = chat_prompt | ChatDeepSeek(model="deepseek-chat") | CommaSeparatedListOutputParser()
 
 # 应用定义
 app = FastAPI(

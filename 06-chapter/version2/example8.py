@@ -3,7 +3,7 @@ from typing_extensions import TypedDict
 from pydantic import BaseModel, Field
 from bs4 import BeautifulSoup as Soup
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.chat_models import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langchain_community.document_loaders.recursive_url_loader import RecursiveUrlLoader
 from langgraph.graph import END, StateGraph, START
 from langchain_anthropic import ChatAnthropic
@@ -43,7 +43,7 @@ class Code(BaseModel):
     prefix: str = Field(description="问题和方法的描述")
     imports: str = Field(description="代码块导入语句")
     code: str = Field(description="不包括导入语句的代码块")
-llm = ChatTongyi()
+llm = ChatDeepSeek(model="deepseek-chat")
 code_gen_chain_tongyi = code_gen_prompt | llm.with_structured_output(Code)
 
 # question = "如何直接将字符串传递给Runnable对象构造提示词？"

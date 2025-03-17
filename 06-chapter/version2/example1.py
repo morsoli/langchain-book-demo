@@ -1,9 +1,9 @@
 # 导入langchain库中的相关模块
 from langchain_core.tools import tool
-from langchain_community.chat_models import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langgraph.prebuilt import create_react_agent
 
-model = ChatTongyi()
+model = ChatDeepSeek(model="deepseek-chat")
 
 # 定义一个工具函数，用于获取句子中不同汉字的数量
 @tool

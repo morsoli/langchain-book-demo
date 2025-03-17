@@ -1,4 +1,4 @@
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langchain.prompts import PromptTemplate
 
 def test():
@@ -7,9 +7,9 @@ def test():
     prompt = PromptTemplate.from_template(
         "给生产{product}的公司取一个名字。"
     )
-    model = ChatTongyi()
+    model = ChatDeepSeek(model="deepseek-chat")
     # 创建一个 Runnable 链，包括上述提示词模板、聊天模型和字符串输出解析器。
-    # 这个链首先生成提示词，然后通过 ChatTongyi 聊天模型进行处理
+    # 这个链首先生成提示词，然后通过 DeepSeek 聊天模型进行处理
     chain = prompt | model
     chain.astream_log
     

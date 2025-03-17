@@ -1,10 +1,9 @@
 from langchain_core.messages import HumanMessage
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langchain_community.llms.tongyi import Tongyi
-from langchain_openai import OpenAI, ChatOp
 
 llm = Tongyi()
-chat_model = ChatTongyi()
+chat_model = ChatDeepSeek(model="deepseek-chat")
 
 text = "给生产杯子的公司取一个名字，直接输出最终名字，无需做额外解释"
 messages = [HumanMessage(content=text)]

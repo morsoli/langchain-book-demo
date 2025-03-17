@@ -7,8 +7,8 @@ from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import tool
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_community.tools.tavily_search import TavilySearchResults
-from langchain_community.chat_models.tongyi import ChatTongyi
 from langchain_community.embeddings.dashscope import DashScopeEmbeddings
+from langchain_deepseek import ChatDeepSeek
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.constants import END, START
 from langgraph.graph import MessagesState, StateGraph
@@ -68,7 +68,7 @@ def search_recall_memories(query: str, config: RunnableConfig) -> List[str]:
     return [document.page_content for document in documents]
 
 tools = [save_recall_memory, search_recall_memories, TavilySearchResults(max_results=1)]
-model = ChatTongyi()
+model = ChatDeepSeek(model="deepseek-chat")
 # 系统提示词模板
 prompt = ChatPromptTemplate.from_messages([
     (

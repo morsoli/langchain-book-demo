@@ -4,7 +4,7 @@ from langchain_core.messages import SystemMessage, RemoveMessage, HumanMessage
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import MessagesState, StateGraph
 from langgraph.constants import START, END
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 
 # 创建记忆系统，用于保存对话状态
 memory = MemorySaver()
@@ -14,7 +14,7 @@ class State(MessagesState):
     summary: str
 
 # 初始化聊天模型
-model = ChatTongyi()
+model = ChatDeepSeek(model="deepseek-chat")
 
 # 定义调用模型的逻辑
 def call_model(state: State):

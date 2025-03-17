@@ -1,6 +1,6 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 from langchain.schema import Document
 
 # 创建文档提示模板
@@ -18,7 +18,7 @@ refine_template = """
 """
 refine_prompt = ChatPromptTemplate([("human", refine_template)])
 
-llm = ChatTongyi()
+llm = ChatDeepSeek(model="deepseek-chat")
 
 refine_summary_chain = refine_prompt | llm | StrOutputParser()
 

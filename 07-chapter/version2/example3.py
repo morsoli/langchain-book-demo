@@ -3,7 +3,7 @@ from langchain_core.messages import (
     HumanMessage,
     trim_messages,
 )
-from langchain_community.chat_models.tongyi import ChatTongyi
+from langchain_deepseek import ChatDeepSeek
 
 # 定义李四和AI之间的对话消息列表，内容涉及爱好和职业等话题
 messages = [
@@ -20,9 +20,9 @@ messages = [
 # 使用trim_messages函数来裁剪消息列表，使其不超过特定的token数量限制
 selected_messages = trim_messages(
     messages,
-    # 使用ChatTongyi来计算消息中的token数量
-    token_counter=ChatTongyi(),
-    max_tokens=200,  # 设置令牌数量的上限为200
+    # 使用 DeepSeek 的词法分析器计算消息中的 token 数
+    token_counter=ChatDeepSeek(model="deepseek-chat"),
+    max_tokens=100,  # 设置令牌数量的上限为200
     # 确保对话历史以人类消息开始
     start_on="human",
     # 如果原始对话历史中包含系统消息，则保留它，因为系统消息可能包含对模型的特殊指令
