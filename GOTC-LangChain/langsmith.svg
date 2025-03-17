@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <style>
+    text { font-family: Arial, sans-serif; }
+    .main-circle { fill: none; stroke: #100; stroke-width: 2; }
+    .sub-circle { fill: #fff; stroke: #000; stroke-width: 1; }
+    .main-text { font-size: 18px; font-weight: bold; }
+    .sub-text { font-size: 12px; }
+    .bg { fill-opacity: 0.1; }
+  </style>
+  
+  <!-- Prototyping -->
+  <circle cx="200" cy="150" r="120" class="bg" fill="#8080ff"/>
+  <circle cx="200" cy="150" r="60" class="main-circle"/>
+  <text x="200" y="155" text-anchor="middle" class="main-text">原型设计</text>
+  
+  <circle cx="140" cy="70" r="30" class="sub-circle"/>
+  <text x="140" y="75" text-anchor="middle" class="sub-text">调试</text>
+  
+  <circle cx="260" cy="70" r="30" class="sub-circle"/>
+  <text x="260" y="75" text-anchor="middle" class="sub-text">试验场</text>
+  
+  <circle cx="120" cy="200" r="30" class="sub-circle"/>
+  <text x="120" y="205" text-anchor="middle" class="sub-text">提示迭代</text>
+  
+  <circle cx="280" cy="200" r="30" class="sub-circle"/>
+  <text x="280" y="205" text-anchor="middle" class="sub-text">效果比对</text>
+
+  <!-- Beta Testing -->
+  <circle cx="400" cy="150" r="120" class="bg" fill="#80ffff"/>
+  <circle cx="400" cy="150" r="60" class="main-circle"/>
+  <text x="400" y="155" text-anchor="middle" class="main-text">测试阶段</text>
+  
+  <circle cx="340" cy="70" r="30" class="sub-circle"/>
+  <text x="340" y="75" text-anchor="middle" class="sub-text">数据集构建</text>
+  
+  <circle cx="460" cy="70" r="30" class="sub-circle"/>
+  <text x="460" y="75" text-anchor="middle" class="sub-text">人工注释</text>
+  
+  <circle cx="400" cy="240" r="30" class="sub-circle"/>
+  <text x="400" y="245" text-anchor="middle" class="sub-text">自动评估</text>
+
+  <!-- Production -->
+  <circle cx="600" cy="150" r="120" class="bg" fill="#ff8080"/>
+  <circle cx="600" cy="150" r="60" class="main-circle"/>
+  <text x="600" y="155" text-anchor="middle" class="main-text">生产环境</text>
+  
+  <circle cx="540" cy="80" r="30" class="sub-circle"/>
+  <text x="540" y="85" text-anchor="middle" class="sub-text">日志</text>
+  
+  <circle cx="660" cy="80" r="30" class="sub-circle"/>
+  <text x="660" y="85" text-anchor="middle" class="sub-text">A/B测试</text>
+
+ <circle cx="600" cy="240" r="30" class="sub-circle"/>
+  <text x="600" y="245" text-anchor="middle" class="sub-text">追踪</text>
+
+  <!-- Arrows -->
+  <path d="M280 150 L320 150" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M480 150 L520 150" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+</svg>
